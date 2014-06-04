@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Defines which repository items are generally included
+-->
+<workspaceFilter vesion="1.0">
+    <filter root="/apps/storypointer" />
+    <filter root="/etc/designs/storypointer" />
+    <filter root="/var/classes/org/apache/jsp" />
+    <filter root="/var/classes/apps" />
+</workspaceFilter>

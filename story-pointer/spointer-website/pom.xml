@@ -11,5 +11,49 @@
 
     <artifactId>spointer-website</artifactId>
 
+    <profiles>
+        <profile>
+            <id>local-dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <crx.host>localhost</crx.host>
+                <crx.port>4502</crx.port>
+                <crx.user>admin</crx.user>
+                <crx.password>admin</crx.password>
+            </properties>
+        </profile>
+    </profiles>
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <version>0.0.19</version>
+                <configuration>
+                    <artifact>story-pointer:spointer-website:1.0-SNAPSHOT:jar</artifact>
+                    <userId>${crx.user}</userId>
+                    <password>${crx.password}</password>
+                    <failOnError>true</failOnError>
+                    <targetURL>http://${crx.host}:${crx.port}/crx/packmgr/service.jsp</targetURL>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
